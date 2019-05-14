@@ -2,7 +2,7 @@
 #define INFO2GUIAPPLICATION_H
 
 #include <QGuiApplication>
-#include<string>
+#include <QTimer>
 
 class Info2GuiApplication : public QGuiApplication
 {
@@ -16,8 +16,14 @@ public:
 
 signals:
     void buttonNameChanged();
+
+public slots:
+    void incrementName();
+
 private:
-    QString button_name = "buttonNAme";
+    int counter = 0;
+    QString button_name;
+    QTimer* timer;
 };
 
 #endif // INFO2GUIAPPLICATION_H
