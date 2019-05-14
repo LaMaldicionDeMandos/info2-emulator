@@ -1,4 +1,5 @@
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include "info2guiapplication.h"
 int main(int argc, char *argv[])
 {
@@ -13,6 +14,8 @@ int main(int argc, char *argv[])
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
+
+    engine.rootContext()->setContextProperty("app", &app);
     engine.load(url);
 
     return app.exec();
