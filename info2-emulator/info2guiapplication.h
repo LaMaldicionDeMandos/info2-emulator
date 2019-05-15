@@ -9,6 +9,8 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
+#define LED_ON_COLOR "#dc2c2c"
+
 class Info2GuiApplication : public QGuiApplication
 {
     Q_OBJECT

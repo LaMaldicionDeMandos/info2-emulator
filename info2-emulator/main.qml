@@ -15,4 +15,24 @@ Window {
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 32
     }
+
+    Rectangle {
+        id: rectangle
+        x: 33
+        y: 152
+        width: 36
+        height: 39
+        color: "#dc2c2c"
+        radius: 11
+        border.color: "#900101"
+        border.width: 2
+    }
+
+    Text {
+        id: element1
+        x: 28
+        y: 197
+        text: qsTr("Led 0")
+        font.pixelSize: 18
+    }
 }
