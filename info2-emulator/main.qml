@@ -9,8 +9,8 @@ Window {
 
     Text {
         id: label
-        x: 275
-        y: 57
+        x: 185
+        y: 70
         text: app.buttonName
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 32

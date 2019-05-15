@@ -3,6 +3,11 @@
 
 #include <QGuiApplication>
 #include <QTimer>
+#include <QSharedMemory>
+
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
 
 class Info2GuiApplication : public QGuiApplication
 {
@@ -22,8 +27,12 @@ public slots:
 
 private:
     int counter = 0;
+    int* data;
     QString button_name;
     QTimer* timer;
+    QSharedMemory sharedMemory;
+    key_t getKey();
+    int* init_shared_memory();
 };
 
 #endif // INFO2GUIAPPLICATION_H
