@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import QtQuick.Controls 1.6
 
 Window {
     visible: true
@@ -7,25 +8,29 @@ Window {
     height: 480
     title: qsTr("Info 2 Emulator")
 
-    Text {
-        id: label
-        x: 185
-        y: 70
-        text: app.buttonName
-        horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: 32
-    }
+    readonly property string led_on: "#ff0000"
+    readonly property string led_off: "#442222"
 
     Rectangle {
         id: rectangle
         x: 33
         y: 152
-        width: 36
-        height: 39
-        color: "#dc2c2c"
-        radius: 11
-        border.color: "#900101"
-        border.width: 2
+        width: 35
+        height: 40
+        radius: 10
+        gradient: Gradient {
+            GradientStop {
+                position: 0
+                color: "#fbfbfb"
+            }
+
+            GradientStop {
+                position: 1
+                color: app.ledState ? led_on : led_off
+            }
+        }
+        border.color: "#cb2121"
+        border.width: 1
     }
 
     Text {
@@ -34,5 +39,15 @@ Window {
         y: 197
         text: qsTr("Led 0")
         font.pixelSize: 18
+    }
+
+    Button {
+        id: button
+        x: 283
+        y: 395
+        width: 57
+        height: 36
+        text: qsTr("Led")
+        onClicked: app.changeLedState()
     }
 }

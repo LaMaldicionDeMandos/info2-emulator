@@ -9,29 +9,25 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-#define LED_ON_COLOR "#dc2c2c"
-
 class Info2GuiApplication : public QGuiApplication
 {
     Q_OBJECT
-    Q_PROPERTY(QString buttonName READ buttonName WRITE setButtonName NOTIFY buttonNameChanged)
+    Q_PROPERTY(int ledState READ ledState WRITE setLedState NOTIFY ledStateChanged)
 public:
     explicit Info2GuiApplication(int argc, char* argv[]);
-    void setButtonName(const QString &name);
 
-    QString buttonName();
+    void setLedState(const bool state);
+    bool ledState();
 
 signals:
-    void buttonNameChanged();
+    void ledStateChanged();
 
 public slots:
-    void incrementName();
+    void changeLedState();
 
 private:
-    int counter = 0;
     int* data;
-    QString button_name;
-    QTimer* timer;
+    bool led = false;
     QSharedMemory sharedMemory;
     key_t getKey();
     int* init_shared_memory();
