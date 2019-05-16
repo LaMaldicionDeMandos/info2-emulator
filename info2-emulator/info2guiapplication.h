@@ -9,6 +9,8 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
+#include "ledsthread.h"
+
 class Info2GuiApplication : public QGuiApplication
 {
     Q_OBJECT
@@ -23,11 +25,13 @@ signals:
     void ledStateChanged();
 
 public slots:
-    void changeLedState();
+    void changeLedState(bool state);
+    void terminate();
 
 private:
     int* data;
     bool led = false;
+    LedsThread* ledsThread;
     QSharedMemory sharedMemory;
     key_t getKey();
     int* init_shared_memory();
