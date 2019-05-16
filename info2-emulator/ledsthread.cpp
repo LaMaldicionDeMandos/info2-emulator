@@ -16,11 +16,9 @@ void LedsThread::run() {
 }
 
 void LedsThread::evaluateLed() {
-    /*
     bool isOn = this->data[LED_0];
     if (isOn != this->on) {
         this->on = isOn;
         this->changeLed(on);
     }
-    */
 }

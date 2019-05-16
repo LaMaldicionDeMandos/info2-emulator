@@ -29,12 +29,12 @@ public slots:
     void terminate();
 
 private:
-    int* data;
+    void* data;
     bool led = false;
     LedsThread* ledsThread;
     QSharedMemory sharedMemory;
     key_t getKey();
-    int* init_shared_memory();
+    void* init_shared_memory();
 };
 
 #endif // INFO2GUIAPPLICATION_H
