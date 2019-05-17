@@ -14,7 +14,7 @@ Window {
     Rectangle {
         id: rectangle
         x: 294
-        y: 37
+        y: 184
         width: 35
         height: 40
         color: "#fbfbfb"
@@ -37,7 +37,7 @@ Window {
     Text {
         id: element1
         x: 289
-        y: 82
+        y: 229
         text: qsTr("Led 0")
         font.pixelSize: 18
     }
@@ -49,7 +49,7 @@ Window {
         width: 95
         height: 36
         text: qsTr("BUTTON 0")
-        onPressedChanged: app.changeButtonState(pressed)
+        onPressedChanged: app.changeButtonState(0, pressed)
     }
 
     Button {
@@ -59,6 +59,7 @@ Window {
         width: 95
         height: 36
         text: qsTr("BUTTON 1")
+        onPressedChanged: app.changeButtonState(1, pressed)
     }
 
     Button {
@@ -68,6 +69,7 @@ Window {
         width: 95
         height: 36
         text: qsTr("BUTTON 2")
+        onPressedChanged: app.changeButtonState(2, pressed)
     }
 
     Button {
@@ -77,6 +79,7 @@ Window {
         width: 95
         height: 36
         text: qsTr("BUTTON 3")
+        onPressedChanged: app.changeButtonState(3, pressed)
     }
 
     Button {
@@ -86,5 +89,6 @@ Window {
         width: 95
         height: 36
         text: qsTr("BUTTON 4")
+        onPressedChanged: app.changeButtonState(4, pressed)
     }
 }

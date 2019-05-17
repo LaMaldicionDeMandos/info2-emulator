@@ -10,6 +10,7 @@
 #include <sys/shm.h>
 
 #include "ledsthread.h"
+#include "components.h"
 
 class Info2GuiApplication : public QGuiApplication
 {
@@ -27,7 +28,7 @@ signals:
     void ledStateChanged();
 
 public slots:
-    void changeButtonState(bool pressed);
+    void changeButtonState(int index, bool pressed);
     void setLedState(const bool state);
 
 private:

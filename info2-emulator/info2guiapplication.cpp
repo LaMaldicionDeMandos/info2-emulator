@@ -1,13 +1,10 @@
 #include "info2guiapplication.h"
 #include <iostream>
 
-#define BUTTON_0 this->data[0]
-#define LED_0 this->data[1]
-
 Info2GuiApplication::Info2GuiApplication(int argc, char* argv[]):  QGuiApplication (argc, argv){
     char* data = init_shared_memory();
     this->data = data;
-    BUTTON_0 = LED_0 = 0;
+    for(int i = 0; i < 0; i++) this->data[i] = 0;
     this->ledsThread = new LedsThread(data);
     QObject::connect((this->ledsThread), SIGNAL(changeLed(bool)), this, SLOT(setLedState(bool)), Qt::QueuedConnection);
     this->ledsThread->start();
@@ -22,9 +19,9 @@ bool Info2GuiApplication::ledState() {
     return led;
 }
 
-void Info2GuiApplication::changeButtonState(bool pressed) {
-    BUTTON_0 = pressed;
-    std::cout << "BUTTON0 " << +BUTTON_0 << std::endl;
+void Info2GuiApplication::changeButtonState(int index, bool pressed) {
+    BUTTON(index) = pressed;
+    std::cout << "BUTTON(" << index << ") " << +BUTTON(index) << std::endl;
 }
 
 void Info2GuiApplication::terminate() {
@@ -35,7 +32,7 @@ void Info2GuiApplication::terminate() {
 // Inicialización de la shared memory
 key_t Info2GuiApplication::getKey() {
     key_t key;
-    if ((key = ftok("/", 'd')) == -1) {
+    if ((key = ftok("/", 'e')) == -1) {
         perror("ftok fails\n");
         return -1;
     }
@@ -48,7 +45,7 @@ char* Info2GuiApplication::init_shared_memory() {
      key_t key;
     if ((key = getKey()) == -1) return nullptr;
 
-     if ((shmid = shmget(key, sizeof (char) * 2, IPC_CREAT | 0644)) == -1) {
+     if ((shmid = shmget(key, MEMORY_SIZE, IPC_CREAT | 0644)) == -1) {
         perror("memory segment creation fails\n");
         return nullptr;
     }
