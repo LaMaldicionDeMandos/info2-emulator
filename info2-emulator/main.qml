@@ -1,11 +1,13 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 1.6
+import QtQuick.Controls.Styles.Desktop 1.0
 
 Window {
     visible: true
     width: 640
     height: 480
+    color: "#67b26a"
     title: qsTr("Info 2 Emulator")
 
     readonly property string led_on: "#ff0000"
