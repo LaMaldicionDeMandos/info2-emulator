@@ -18,13 +18,15 @@ class Info2GuiApplication : public QGuiApplication
 public:
     explicit Info2GuiApplication(int argc, char* argv[]);
     void terminate();
+
+    //LED 0: Para que la view lea el estado del led
     bool ledState();
 
 signals:
+    //LED 0: Señal que avisa que el led cambio de estado
     void ledStateChanged();
 
 public slots:
-    void changeLedState();
     void changeButtonState(bool pressed);
     void setLedState(const bool state);
 

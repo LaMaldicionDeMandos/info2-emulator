@@ -50,6 +50,5 @@ Window {
         height: 36
         text: qsTr("BUTTON 0")
         onPressedChanged: app.changeButtonState(pressed)
-     //   onClicked: app.changeLedState()
     }
 }
