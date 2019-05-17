@@ -25,6 +25,7 @@ signals:
 
 public slots:
     void changeLedState();
+    void changeButtonState(bool pressed);
     void setLedState(const bool state);
 
 private:

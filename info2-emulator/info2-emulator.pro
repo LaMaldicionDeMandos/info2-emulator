@@ -33,3 +33,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     info2guiapplication.h \
     ledsthread.h
+
+DISTFILES += \
+    README.md

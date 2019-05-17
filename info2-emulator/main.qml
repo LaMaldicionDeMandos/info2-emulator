@@ -13,10 +13,11 @@ Window {
 
     Rectangle {
         id: rectangle
-        x: 33
-        y: 152
+        x: 294
+        y: 37
         width: 35
         height: 40
+        color: "#fbfbfb"
         radius: 10
         gradient: Gradient {
             GradientStop {
@@ -35,19 +36,20 @@ Window {
 
     Text {
         id: element1
-        x: 28
-        y: 197
+        x: 289
+        y: 82
         text: qsTr("Led 0")
         font.pixelSize: 18
     }
 
     Button {
         id: button
-        x: 283
+        x: 17
         y: 395
-        width: 57
+        width: 605
         height: 36
-        text: qsTr("Led")
-        onClicked: app.changeLedState()
+        text: qsTr("BUTTON 0")
+        onPressedChanged: app.changeButtonState(pressed)
+     //   onClicked: app.changeLedState()
     }
 }

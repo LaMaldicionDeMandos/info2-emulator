@@ -23,6 +23,10 @@ void Info2GuiApplication::changeLedState(){
     LED = !LED;
 }
 
+void Info2GuiApplication::changeButtonState(bool pressed) {
+    LED = !pressed;
+}
+
 void Info2GuiApplication::terminate() {
     this->ledsThread->quit();
     this->ledsThread->wait();
