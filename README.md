@@ -8,4 +8,8 @@ A continuación detallo que componente corresponde a cada espacio de memoria com
 |Indice|Componentes|
 |------|-----------|
 |0|BUTTON0|
-|1|LED0|
+|1|BUTTON1|
+|2|BUTTON2|
+|3|BUTTON3|
+|4|BUTTON4|
+|5|LED0|

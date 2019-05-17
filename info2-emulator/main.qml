@@ -43,12 +43,48 @@ Window {
     }
 
     Button {
-        id: button
-        x: 17
-        y: 395
-        width: 605
+        id: button0
+        x: 528
+        y: 423
+        width: 95
         height: 36
         text: qsTr("BUTTON 0")
         onPressedChanged: app.changeButtonState(pressed)
+    }
+
+    Button {
+        id: button1
+        x: 396
+        y: 423
+        width: 95
+        height: 36
+        text: qsTr("BUTTON 1")
+    }
+
+    Button {
+        id: button2
+        x: 264
+        y: 423
+        width: 95
+        height: 36
+        text: qsTr("BUTTON 2")
+    }
+
+    Button {
+        id: button3
+        x: 141
+        y: 423
+        width: 95
+        height: 36
+        text: qsTr("BUTTON 3")
+    }
+
+    Button {
+        id: button4
+        x: 18
+        y: 423
+        width: 95
+        height: 36
+        text: qsTr("BUTTON 4")
     }
 }
