@@ -21,7 +21,7 @@ bool Info2GuiApplication::ledState() {
 
 void Info2GuiApplication::changeButtonState(int index, bool pressed) {
     BUTTON(index) = pressed;
-    std::cout << "BUTTON(" << index << ") " << +BUTTON(index) << std::endl;
+    std::cout << "BUTTON_" << index << "=" << +BUTTON(index) << std::endl;
 }
 
 void Info2GuiApplication::terminate() {
