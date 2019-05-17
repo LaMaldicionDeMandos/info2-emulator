@@ -34,5 +34,4 @@ HEADERS += \
     info2guiapplication.h \
     ledsthread.h
 
-DISTFILES += \
-    README.md
+DISTFILES +=
