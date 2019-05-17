@@ -17,24 +17,23 @@ class Info2GuiApplication : public QGuiApplication
     Q_PROPERTY(int ledState READ ledState WRITE setLedState NOTIFY ledStateChanged)
 public:
     explicit Info2GuiApplication(int argc, char* argv[]);
-
-    void setLedState(const bool state);
+    void terminate();
     bool ledState();
 
 signals:
     void ledStateChanged();
 
 public slots:
-    void changeLedState(bool state);
-    void terminate();
+    void changeLedState();
+    void setLedState(const bool state);
 
 private:
-    void* data;
+    char* data;
     bool led = false;
     LedsThread* ledsThread;
     QSharedMemory sharedMemory;
     key_t getKey();
-    void* init_shared_memory();
+    char* init_shared_memory();
 };
 
 #endif // INFO2GUIAPPLICATION_H

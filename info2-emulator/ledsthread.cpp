@@ -1,7 +1,8 @@
 #include "ledsthread.h"
 #include <QTimer>
+#include <stdio.h>
 
-LedsThread::LedsThread(int* data)
+LedsThread::LedsThread(char* data)
 {
     this->data = data;
 }
@@ -18,6 +19,7 @@ void LedsThread::run() {
 void LedsThread::evaluateLed() {
     bool isOn = this->data[LED_0];
     if (isOn != this->on) {
+        printf("Change LED: %d\n", isOn);
         this->on = isOn;
         this->changeLed(on);
     }

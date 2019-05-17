@@ -11,12 +11,12 @@ signals:
     void changeLed( bool state );
 private:
     void run();
-    void* data;
+    char* data;
     bool on;
 private slots:
     void evaluateLed();
 public:
-    LedsThread(void* data);
+    LedsThread(char* data);
 };
 
 #endif // LEDSTHREAD_H
