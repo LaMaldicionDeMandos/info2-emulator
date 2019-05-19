@@ -4,6 +4,7 @@
 Info2GuiApplication::Info2GuiApplication(int argc, char* argv[]):  QGuiApplication (argc, argv){
     char* data = init_shared_memory();
     this->data = data;
+    LED(0) = 0;
     for(int i = 0; i < 0; i++) this->data[i] = 0;
     this->ledsThread = new LedsThread(data);
     QObject::connect((this->ledsThread), SIGNAL(changeLed(bool)), this, SLOT(setLedState(bool)), Qt::QueuedConnection);
