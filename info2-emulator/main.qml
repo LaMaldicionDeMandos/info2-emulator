@@ -64,8 +64,8 @@ Window {
 
         Button {
             id: button0
-            x: 587
-            y: 423
+            x: 596
+            y: 436
             width: 36
             height: 36
             text: qsTr("B0")
@@ -77,8 +77,8 @@ Window {
 
         Button {
             id: button1
-            x: 545
-            y: 423
+            x: 554
+            y: 436
             width: 36
             height: 36
             text: qsTr("B1")
@@ -90,8 +90,8 @@ Window {
 
         Button {
             id: button2
-            x: 503
-            y: 423
+            x: 512
+            y: 436
             width: 36
             height: 36
             text: qsTr("B2")
@@ -103,8 +103,8 @@ Window {
 
         Button {
             id: button3
-            x: 461
-            y: 423
+            x: 470
+            y: 436
             width: 36
             height: 36
             text: qsTr("B3")
@@ -116,8 +116,8 @@ Window {
 
         Button {
             id: button4
-            x: 419
-            y: 423
+            x: 428
+            y: 436
             width: 36
             height: 36
             text: qsTr("B4")
@@ -125,6 +125,114 @@ Window {
             background: Rectangle {
                 radius: 15
             }
+        }
+
+        Switch {
+            id: input0
+            x: 0
+            y: 432
+            text: "IN_0"
+            indicator: Rectangle {
+                implicitWidth: 48
+                    implicitHeight: 26
+                    x: input0.leftPadding
+                    y: parent.height / 2 - height / 2
+                    color: input0.checked ? "#cdffbe" : "#aaaaaa"
+                    radius: 13
+                    border.color: "#777777"
+
+                    Rectangle {
+                        x: input0.checked ? parent.width - width : 0
+                        width: 26
+                        height: 26
+                        radius: 13
+                        color: input0.down ? "#cccccc" : "#ffffff"
+                        border.color: input0.checked ? (input0.down ? "#17a81a" : "#21be2b") : "#999999"
+                    }
+                }
+            contentItem: Text {
+                color: "#d5d5f8"
+                text: input0.text
+                font.bold: true
+                renderType: Text.NativeRendering
+                horizontalAlignment: Text.AlignLeft
+                font: input0.font
+                opacity: enabled ? 1.0 : 0.3
+                    verticalAlignment: Text.AlignVCenter
+                    leftPadding: input0.indicator.width + input0.spacing
+                }
+        }
+
+        Switch {
+            id: input1
+            x: 0
+            y: 394
+            text: "IN_1"
+            indicator: Rectangle {
+                implicitWidth: 48
+                    implicitHeight: 26
+                    x: input1.leftPadding
+                    y: parent.height / 2 - height / 2
+                    color: input1.checked ? "#cdffbe" : "#aaaaaa"
+                    radius: 13
+                    border.color: "#777777"
+
+                    Rectangle {
+                        x: input1.checked ? parent.width - width : 0
+                        width: 26
+                        height: 26
+                        radius: 13
+                        color: input1.down ? "#cccccc" : "#ffffff"
+                        border.color: input1.checked ? (input1.down ? "#17a81a" : "#21be2b") : "#999999"
+                    }
+                }
+            contentItem: Text {
+                color: "#d5d5f8"
+                text: input1.text
+                font.bold: true
+                renderType: Text.NativeRendering
+                horizontalAlignment: Text.AlignLeft
+                font: input1.font
+                opacity: enabled ? 1.0 : 0.3
+                    verticalAlignment: Text.AlignVCenter
+                    leftPadding: input1.indicator.width + input1.spacing
+                }
+        }
+
+        Switch {
+            id: input2
+            x: 0
+            y: 356
+            text: "IN_2"
+            indicator: Rectangle {
+                implicitWidth: 48
+                    implicitHeight: 26
+                    x: input2.leftPadding
+                    y: parent.height / 2 - height / 2
+                    color: input2.checked ? "#cdffbe" : "#aaaaaa"
+                    radius: 13
+                    border.color: "#777777"
+
+                    Rectangle {
+                        x: input2.checked ? parent.width - width : 0
+                        width: 26
+                        height: 26
+                        radius: 13
+                        color: input2.down ? "#cccccc" : "#ffffff"
+                        border.color: input2.checked ? (input2.down ? "#17a81a" : "#21be2b") : "#999999"
+                    }
+                }
+            contentItem: Text {
+                color: "#d5d5f8"
+                text: input2.text
+                font.bold: true
+                renderType: Text.NativeRendering
+                horizontalAlignment: Text.AlignLeft
+                font: input2.font
+                opacity: enabled ? 1.0 : 0.3
+                    verticalAlignment: Text.AlignVCenter
+                    leftPadding: input2.indicator.width + input2.spacing
+                }
         }
 
     }
