@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 1.4
+import QtQuick.Controls 2.1
 import QtQuick.Controls.Styles.Desktop 1.0
 import QtQuick.Controls.Styles 1.4
 
@@ -18,6 +19,7 @@ Window {
     Rectangle {
         width: 640
         height: 480
+        color: "#65b763"
         gradient: Gradient {
             GradientStop {
                 position: 0
@@ -48,7 +50,7 @@ Window {
                     color: app.ledState ? led_on : led_off
                 }
             }
-            border.color: "#cb2121"
+            border.color: "#212121"
             border.width: 1
         }
 
@@ -66,16 +68,10 @@ Window {
             y: 423
             width: 95
             height: 36
-            text: qsTr("BUTTON 0")
+            text: qsTr("B0")
             onPressedChanged: app.changeButtonState(0, pressed)
-            style: ButtonStyle {
-                background: Rectangle {
-                    radius: 15
-                    gradient: Gradient {
-                        GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
-                        GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ccc" }
-                    }
-                }
+            background: Rectangle {
+                radius: 15
             }
         }
 
@@ -85,16 +81,10 @@ Window {
             y: 423
             width: 95
             height: 36
-            text: qsTr("BUTTON 1")
+            text: qsTr("B1")
             onPressedChanged: app.changeButtonState(1, pressed)
-            style: ButtonStyle {
-                background: Rectangle {
-                    radius: 15
-                    gradient: Gradient {
-                        GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
-                        GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ccc" }
-                    }
-                }
+            background: Rectangle {
+                radius: 15
             }
         }
 
@@ -106,14 +96,8 @@ Window {
             height: 36
             text: qsTr("BUTTON 2")
             onPressedChanged: app.changeButtonState(2, pressed)
-            style: ButtonStyle {
-                background: Rectangle {
-                    radius: 15
-                    gradient: Gradient {
-                        GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
-                        GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ccc" }
-                    }
-                }
+            background: Rectangle {
+                radius: 15
             }
         }
 
@@ -125,14 +109,8 @@ Window {
             height: 36
             text: qsTr("BUTTON 3")
             onPressedChanged: app.changeButtonState(3, pressed)
-            style: ButtonStyle {
-                background: Rectangle {
-                    radius: 15
-                    gradient: Gradient {
-                        GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
-                        GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ccc" }
-                    }
-                }
+            background: Rectangle {
+                radius: 15
             }
         }
 
@@ -144,16 +122,11 @@ Window {
             height: 36
             text: qsTr("BUTTON 4")
             onPressedChanged: app.changeButtonState(4, pressed)
-            style: ButtonStyle {
-                background: Rectangle {
-                    radius: 15
-                    gradient: Gradient {
-                        GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
-                        GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ccc" }
-                    }
-                }
+            background: Rectangle {
+                radius: 15
             }
         }
+
     }
 
 }
