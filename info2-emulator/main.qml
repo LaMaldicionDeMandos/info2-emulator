@@ -64,9 +64,9 @@ Window {
 
         Button {
             id: button0
-            x: 528
+            x: 587
             y: 423
-            width: 95
+            width: 36
             height: 36
             text: qsTr("B0")
             onPressedChanged: app.changeButtonState(0, pressed)
@@ -77,9 +77,9 @@ Window {
 
         Button {
             id: button1
-            x: 396
+            x: 545
             y: 423
-            width: 95
+            width: 36
             height: 36
             text: qsTr("B1")
             onPressedChanged: app.changeButtonState(1, pressed)
@@ -90,11 +90,11 @@ Window {
 
         Button {
             id: button2
-            x: 264
+            x: 503
             y: 423
-            width: 95
+            width: 36
             height: 36
-            text: qsTr("BUTTON 2")
+            text: qsTr("B2")
             onPressedChanged: app.changeButtonState(2, pressed)
             background: Rectangle {
                 radius: 15
@@ -103,11 +103,11 @@ Window {
 
         Button {
             id: button3
-            x: 141
+            x: 461
             y: 423
-            width: 95
+            width: 36
             height: 36
-            text: qsTr("BUTTON 3")
+            text: qsTr("B3")
             onPressedChanged: app.changeButtonState(3, pressed)
             background: Rectangle {
                 radius: 15
@@ -116,11 +116,11 @@ Window {
 
         Button {
             id: button4
-            x: 18
+            x: 419
             y: 423
-            width: 95
+            width: 36
             height: 36
-            text: qsTr("BUTTON 4")
+            text: qsTr("B4")
             onPressedChanged: app.changeButtonState(4, pressed)
             background: Rectangle {
                 radius: 15
