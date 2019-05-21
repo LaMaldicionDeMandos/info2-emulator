@@ -5,7 +5,7 @@ Info2GuiApplication::Info2GuiApplication(int argc, char* argv[]):  QGuiApplicati
     char* data = init_shared_memory();
     this->data = data;
     LED(0) = 0;
-    for(int i = 0; i < 0; i++) this->data[i] = 0;
+    for(int i = 0; i < COMPONENT_COUNT; i++) this->data[i] = 0;
     this->ledsThread = new LedsThread(data);
     QObject::connect((this->ledsThread), SIGNAL(changeLed(bool)), this, SLOT(setLedState(bool)), Qt::QueuedConnection);
     this->ledsThread->start();
@@ -25,6 +25,11 @@ void Info2GuiApplication::changeButtonState(int index, bool pressed) {
     std::cout << "BUTTON_" << index << "=" << +BUTTON(index) << std::endl;
 }
 
+void Info2GuiApplication::changeIn(int index, bool checked) {
+    IN(index) = checked;
+    std::cout << "IN_" << index << "=" << +IN(index) << std::endl;
+}
+
 void Info2GuiApplication::terminate() {
     this->ledsThread->quit();
     this->ledsThread->wait();
@@ -33,7 +38,7 @@ void Info2GuiApplication::terminate() {
 // Inicialización de la shared memory
 key_t Info2GuiApplication::getKey() {
     key_t key;
-    if ((key = ftok("/", 'f')) == -1) {
+    if ((key = ftok("/", 'g')) == -1) {
         perror("ftok fails\n");
         return -1;
     }

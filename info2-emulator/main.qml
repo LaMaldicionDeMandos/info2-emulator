@@ -132,6 +132,7 @@ Window {
             x: 0
             y: 432
             text: "IN_0"
+            onCheckedChanged: app.changeIn(0, checked)
             indicator: Rectangle {
                 implicitWidth: 48
                     implicitHeight: 26
@@ -156,7 +157,7 @@ Window {
                 font.bold: true
                 renderType: Text.NativeRendering
                 horizontalAlignment: Text.AlignLeft
-                font: input0.font
+                //font: input0.font
                 opacity: enabled ? 1.0 : 0.3
                     verticalAlignment: Text.AlignVCenter
                     leftPadding: input0.indicator.width + input0.spacing
@@ -168,6 +169,7 @@ Window {
             x: 0
             y: 394
             text: "IN_1"
+            onCheckedChanged: app.changeIn(1, checked)
             indicator: Rectangle {
                 implicitWidth: 48
                     implicitHeight: 26
@@ -192,7 +194,7 @@ Window {
                 font.bold: true
                 renderType: Text.NativeRendering
                 horizontalAlignment: Text.AlignLeft
-                font: input1.font
+                //font: input1.font
                 opacity: enabled ? 1.0 : 0.3
                     verticalAlignment: Text.AlignVCenter
                     leftPadding: input1.indicator.width + input1.spacing
@@ -204,6 +206,7 @@ Window {
             x: 0
             y: 356
             text: "IN_2"
+            onCheckedChanged: app.changeIn(2, checked)
             indicator: Rectangle {
                 implicitWidth: 48
                     implicitHeight: 26
@@ -228,7 +231,7 @@ Window {
                 font.bold: true
                 renderType: Text.NativeRendering
                 horizontalAlignment: Text.AlignLeft
-                font: input2.font
+                //font: input2.font
                 opacity: enabled ? 1.0 : 0.3
                     verticalAlignment: Text.AlignVCenter
                     leftPadding: input2.indicator.width + input2.spacing
