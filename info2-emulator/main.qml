@@ -235,7 +235,21 @@ Window {
                 opacity: enabled ? 1.0 : 0.3
                     verticalAlignment: Text.AlignVCenter
                     leftPadding: input2.indicator.width + input2.spacing
-                }
+            }
+        }
+
+        Dial {
+            id: relay0
+            x: 14
+            y: 30
+            width: 40
+            height: 40
+            stepSize: 0.1
+            wheelEnabled: true
+            font.family: "Tahoma"
+            enabled: false
+            inputMode: Dial.Circular
+            value: app.relayState
         }
 
     }

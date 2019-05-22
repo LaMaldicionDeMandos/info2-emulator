@@ -16,11 +16,21 @@ void Info2GuiApplication::setLedState(const bool state) {
     emit ledStateChanged();
 }
 
+void Info2GuiApplication::setRelayState(const int state) {
+    relay = state;
+    emit relayStateChanged();
+}
+
 bool Info2GuiApplication::ledState() {
     return led;
 }
 
+int Info2GuiApplication::relayState() {
+    return relay;
+}
+
 void Info2GuiApplication::changeButtonState(int index, bool pressed) {
+    setRelayState(relay + 1);
     BUTTON(index) = pressed;
     std::cout << "BUTTON_" << index << "=" << +BUTTON(index) << std::endl;
 }
