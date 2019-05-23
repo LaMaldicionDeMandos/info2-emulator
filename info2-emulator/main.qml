@@ -9,12 +9,12 @@ Window {
     visible: true
     width: 640
     height: 480
-    //color: "#67b26a"
 
     title: qsTr("Info 2 Emulator")
 
     readonly property string led_on: "#ff0000"
     readonly property string led_off: "#442222"
+    readonly property int relay_max_value: 60
 
     Rectangle {
         width: 640
@@ -244,12 +244,15 @@ Window {
             y: 30
             width: 40
             height: 40
-            stepSize: 0.1
+            to: relay_max_value
+            from: 0
+            value: app.relayState % relay_max_value
+            spacing: -7
+            stepSize: 1
             wheelEnabled: true
             font.family: "Tahoma"
             enabled: false
             inputMode: Dial.Circular
-            value: app.relayState
         }
 
     }
