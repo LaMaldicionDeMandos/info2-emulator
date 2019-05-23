@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>Relay.qml</file>
+        <file>InputButton.qml</file>
+        <file>DigitalInput.qml</file>
     </qresource>
 </RCC>
