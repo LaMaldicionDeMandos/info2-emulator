@@ -109,7 +109,8 @@ Window {
             id: relay0
             x: 14
             y: 30
-            value: app.relayState % relay_max_value
+            label: qsTr("Relay 0")
+            Binding {target: relay0; property: "state"; value: app.ledState}
         }
 
     }
