@@ -32,35 +32,13 @@ Window {
                 color: "#1F9117"
             }
         }
-        Rectangle {
-            id: rectangle
-            x: 294
-            y: 184
-            width: 35
-            height: 40
-            color: "#fbfbfb"
-            radius: 10
-            gradient: Gradient {
-                GradientStop {
-                    position: 0
-                    color: "#fbfbfb"
-                }
 
-                GradientStop {
-                    position: 1
-                    color: app.ledState ? led_on : led_off
-                }
-            }
-            border.color: "#212121"
-            border.width: 1
-        }
-
-        Text {
-            id: element1
-            x: 289
-            y: 229
-            text: qsTr("Led 0")
-            font.pixelSize: 18
+        Led {
+            id: led
+            x: 292
+            y: 175
+            label: qsTr("Led 0")
+            Binding {target: led; property: "state"; value: app.ledState}
         }
 
         InputButton {

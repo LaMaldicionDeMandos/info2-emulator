@@ -4,5 +4,6 @@
         <file>Relay.qml</file>
         <file>InputButton.qml</file>
         <file>DigitalInput.qml</file>
+        <file>Led.qml</file>
     </qresource>
 </RCC>
