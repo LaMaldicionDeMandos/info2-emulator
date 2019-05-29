@@ -113,6 +113,22 @@ Window {
             Binding {target: relay0; property: "state"; value: app.ledState}
         }
 
+        Relay {
+            id: relay1
+            x: 14
+            y: 54
+            label: qsTr("Relay 1")
+            Binding {target: relay1; property: "state"; value: false}
+        }
+
+        Relay {
+            id: relay2
+            x: 14
+            y: 78
+            label: qsTr("Relay 2")
+            Binding {target: relay2; property: "state"; value: true}
+        }
+
     }
 
 }
