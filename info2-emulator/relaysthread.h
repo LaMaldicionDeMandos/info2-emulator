@@ -10,11 +10,11 @@ class RelaysThread: public QThread
 {
     Q_OBJECT
 signals:
-    void changeState( int index, bool state );
+    void changeRelay( int index );
 private:
     void run();
     char* data;
-    bool state[RELAYS];
+    bool relays[RELAYS];
 private slots:
     void evaluateRelays();
 public:
