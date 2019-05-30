@@ -15,7 +15,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         info2guiapplication.cpp \
         ledsthread.cpp \
-        main.cpp
+        main.cpp \
+        relaysthread.cpp
 
 RESOURCES += qml.qrc
 
@@ -33,6 +34,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     components.h \
     info2guiapplication.h \
-    ledsthread.h
+    ledsthread.h \
+    relaysthread.h
 
 DISTFILES +=

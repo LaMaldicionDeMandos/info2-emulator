@@ -4,10 +4,11 @@
 Info2GuiApplication::Info2GuiApplication(int argc, char* argv[]):  QGuiApplication (argc, argv){
     char* data = init_shared_memory();
     this->data = data;
-    LED(0) = 0;
     for(int i = 0; i < COMPONENT_COUNT; i++) this->data[i] = 0;
     this->ledsThread = new LedsThread(data);
+    this->relayThread =  new RelaysThread(data);
     QObject::connect((this->ledsThread), SIGNAL(changeLed(bool)), this, SLOT(setLedState(bool)), Qt::QueuedConnection);
+    QObject::connect((this->relayThread), SIGNAL(changeState(int, bool)), this, SLOT(setRelayState(int, bool)), Qt::QueuedConnection);
     this->ledsThread->start();
 }
 
@@ -16,8 +17,8 @@ void Info2GuiApplication::setLedState(const bool state) {
     emit ledStateChanged();
 }
 
-void Info2GuiApplication::setRelayState(const int state) {
-    relay = state;
+void Info2GuiApplication::setRelayState(const int index, const bool state) {
+    relays[index] = state;
     emit relayStateChanged();
 }
 
@@ -25,12 +26,12 @@ bool Info2GuiApplication::ledState() {
     return led;
 }
 
-int Info2GuiApplication::relayState() {
-    return relay;
+bool Info2GuiApplication::relayState(int index) {
+    return relays[index];
 }
 
 void Info2GuiApplication::changeButtonState(int index, bool pressed) {
-    setRelayState(relay + 1);
+    setRelayState(0, !relays[0]);
     BUTTON(index) = pressed;
     std::cout << "BUTTON_" << index << "=" << +BUTTON(index) << std::endl;
 }
@@ -48,7 +49,7 @@ void Info2GuiApplication::terminate() {
 // Inicialización de la shared memory
 key_t Info2GuiApplication::getKey() {
     key_t key;
-    if ((key = ftok("/", 'g')) == -1) {
+    if ((key = ftok("/", 'h')) == -1) {
         perror("ftok fails\n");
         return -1;
     }
