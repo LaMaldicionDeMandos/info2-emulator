@@ -16,11 +16,11 @@ void RelaysThread::run() {
 }
 
 void RelaysThread::evaluateRelays() {
-    /*
-    bool isOn = LED(LED0);
-    if (isOn != this->on) {
-        this->on = isOn;
-        this->changeLed(on);
+    for (int i = 0; i < RELAYS; i++) {
+         bool isOn = RELAY(i);
+         if (isOn != relays[i]) {
+             this->relays[i] = isOn;
+             this->changeRelay(i);
+         }
     }
-    */
 }

@@ -110,7 +110,7 @@ Window {
             x: 14
             y: 30
             label: qsTr("Relay 0")
-            Binding {target: relay0; property: "state"; value: app.relaysState0}
+            Binding {target: relay0; property: "state"; value: app.relay0}
         }
 
         Relay {
@@ -118,7 +118,7 @@ Window {
             x: 14
             y: 54
             label: qsTr("Relay 1")
-            Binding {target: relay1; property: "state"; value: false}
+            Binding {target: relay1; property: "state"; value: app.relay1}
         }
 
         Relay {
@@ -126,7 +126,7 @@ Window {
             x: 14
             y: 78
             label: qsTr("Relay 2")
-            Binding {target: relay2; property: "state"; value: true}
+            Binding {target: relay2; property: "state"; value: app.relay2}
         }
 
         Relay {
@@ -134,7 +134,7 @@ Window {
             x: 14
             y: 102
             label: qsTr("Relay 3")
-            Binding {target: relay3; property: "state"; value: true}
+            Binding {target: relay3; property: "state"; value: app.relay3}
         }
 
     }
