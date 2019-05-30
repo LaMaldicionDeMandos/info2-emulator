@@ -8,7 +8,7 @@ Info2GuiApplication::Info2GuiApplication(int argc, char* argv[]):  QGuiApplicati
     this->ledsThread = new LedsThread(data);
     this->relaysThread = new RelaysThread(data);
     QObject::connect((this->ledsThread), SIGNAL(changeLed(bool)), this, SLOT(setLedState(bool)), Qt::QueuedConnection);
-    QObject::connect((this->relaysThread), SIGNAL(changeRelays(int)), this, SLOT(setRelaysState(int)), Qt::QueuedConnection);
+    QObject::connect((this->relaysThread), SIGNAL(changeRelay(int)), this, SLOT(setRelaysState(int)), Qt::QueuedConnection);
     this->ledsThread->start();
     this->relaysThread->start();
 }
@@ -27,11 +27,25 @@ bool Info2GuiApplication::ledState() {
     return led;
 }
 
-bool Info2GuiApplication::relaysState() {
-    return true;
+bool Info2GuiApplication::relaysState0() {
+    std::cout << "RELAY_0" << "=" << +relays[0] << std::endl;
+    return relays[0];
+}
+
+bool Info2GuiApplication::relaysState1() {
+    return relays[1];
+}
+
+bool Info2GuiApplication::relaysState2() {
+    return relays[2];
+}
+
+bool Info2GuiApplication::relaysState3() {
+    return relays[3];
 }
 
 void Info2GuiApplication::changeButtonState(int index, bool pressed) {
+    RELAY(0) = !RELAY(0);
     BUTTON(index) = pressed;
     std::cout << "BUTTON_" << index << "=" << +BUTTON(index) << std::endl;
 }

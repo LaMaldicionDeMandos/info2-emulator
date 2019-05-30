@@ -110,7 +110,7 @@ Window {
             x: 14
             y: 30
             label: qsTr("Relay 0")
-            Binding {target: relay0; property: "state"; value: true}
+            Binding {target: relay0; property: "state"; value: app.relaysState0}
         }
 
         Relay {

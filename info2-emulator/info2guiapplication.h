@@ -17,14 +17,20 @@ class Info2GuiApplication : public QGuiApplication
 {
     Q_OBJECT
     Q_PROPERTY(int ledState READ ledState WRITE setLedState NOTIFY ledStateChanged)
-    Q_PROPERTY(bool RelaysState READ relaysState WRITE setRelaysState NOTIFY relaysStateChanged)
+    Q_PROPERTY(bool relaysState0 READ relaysState0 WRITE setRelaysState NOTIFY relaysStateChanged)
+    Q_PROPERTY(bool relaysState1 READ relaysState1 WRITE setRelaysState NOTIFY relaysStateChanged)
+    Q_PROPERTY(bool relaysState2 READ relaysState2 WRITE setRelaysState NOTIFY relaysStateChanged)
+    Q_PROPERTY(bool relaysState3 READ relaysState3 WRITE setRelaysState NOTIFY relaysStateChanged)
 public:
     explicit Info2GuiApplication(int argc, char* argv[]);
     void terminate();
 
     //LED 0: Para que la view lea el estado del led
     bool ledState();
-    bool relaysState();
+    bool relaysState0();
+    bool relaysState1();
+    bool relaysState2();
+    bool relaysState3();
 
 signals:
     //LED 0: Señal que avisa que el led cambio de estado
