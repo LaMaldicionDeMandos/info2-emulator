@@ -137,6 +137,13 @@ Window {
             Binding {target: relay3; property: "state"; value: app.relay3}
         }
 
+        Thermometer {
+            id: thermometer
+            x: 8
+            y: 128
+            width: 0
+            height: 224
+        }
     }
 
 }
