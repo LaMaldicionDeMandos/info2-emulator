@@ -1,7 +1,7 @@
 #include "ledsthread.h"
 #include <QTimer>
 
-LedsThread::LedsThread(char* data)
+LedsThread::LedsThread(uint8_t* data)
 {
     this->data = data;
 }

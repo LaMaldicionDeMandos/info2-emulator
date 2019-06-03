@@ -13,12 +13,12 @@ signals:
     void changeRelay( int index );
 private:
     void run();
-    char* data;
+    uint8_t* data;
     bool relays[RELAYS];
 private slots:
     void evaluateRelays();
 public:
-    RelaysThread(char* data);
+    RelaysThread(uint8_t* data);
 };
 
 #endif // RELAYSTHREAD_H

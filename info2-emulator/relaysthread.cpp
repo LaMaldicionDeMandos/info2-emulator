@@ -1,7 +1,7 @@
 #include "relaysthread.h"
 #include <QTimer>
 
-RelaysThread::RelaysThread(char* data)
+RelaysThread::RelaysThread(uint8_t* data)
 {
     this->data = data;
 }
