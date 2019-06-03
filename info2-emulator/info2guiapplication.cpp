@@ -25,7 +25,11 @@ void Info2GuiApplication::setRelays(const int index) {
 
 void Info2GuiApplication::setThermometer(const uint16_t value) {
     thermometerValue = value;
-    //TODO settear termometro
+    THERMOMETER_TYPE thermometerData;
+    thermometerData.value = thermometerValue;
+    this->data[THERMOMETER] = thermometerData.bytes[0];
+    this->data[THERMOMETER + 1] = thermometerData.bytes[1];
+    std::cout << "TH = " << thermometerValue << std::endl;
     emit thermometerChanged();
 }
 
