@@ -21,7 +21,7 @@ class Info2GuiApplication : public QGuiApplication
     Q_PROPERTY(bool relay1 READ relay1 WRITE setRelays NOTIFY relaysChanged)
     Q_PROPERTY(bool relay2 READ relay2 WRITE setRelays NOTIFY relaysChanged)
     Q_PROPERTY(bool relay3 READ relay3 WRITE setRelays NOTIFY relaysChanged)
-    Q_PROPERTY(bool thermometer READ thermometer WRITE setThermometer NOTIFY thermometerChanged)
+    Q_PROPERTY(int thermometer READ thermometer WRITE setThermometer NOTIFY thermometerChanged)
 public:
     explicit Info2GuiApplication(int argc, char* argv[]);
     void terminate();
@@ -45,7 +45,7 @@ public slots:
     void changeIn(int index, bool checked);
     void setLedState(const bool state);
     void setRelays(const int index);
-    void setThermometer(const uint16_t value);
+    void setThermometer(const int value);
 
 private:
     uint8_t* data;

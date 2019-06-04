@@ -143,6 +143,7 @@ Window {
             y: 128
             width: 0
             height: 224
+            onTempChanged: app.thermometer = value
         }
     }
 

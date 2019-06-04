@@ -23,13 +23,14 @@ void Info2GuiApplication::setRelays(const int index) {
     emit relaysChanged();
 }
 
-void Info2GuiApplication::setThermometer(const uint16_t value) {
+void Info2GuiApplication::setThermometer(const int value) {
     thermometerValue = value;
     THERMOMETER_TYPE thermometerData;
     thermometerData.value = thermometerValue;
     this->data[THERMOMETER] = thermometerData.bytes[0];
     this->data[THERMOMETER + 1] = thermometerData.bytes[1];
     std::cout << "TH = " << thermometerValue << std::endl;
+
     emit thermometerChanged();
 }
 

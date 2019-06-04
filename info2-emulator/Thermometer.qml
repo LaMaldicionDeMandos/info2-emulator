@@ -3,14 +3,16 @@ import QtQuick.Controls 2.1
 
 Rectangle {
     height: 224
+    signal tempChanged(int value)
     Slider {
         id: thermometer_slider
         width: 22
         height: 224
         stepSize: 10
-        from: -1000
-        to: 2000
+        to: 5000
+        value: 2730
         orientation: Qt.Vertical
+        onValueChanged: tempChanged(thermometer_slider.value)
     }
 
     Text {
@@ -25,7 +27,7 @@ Rectangle {
         id: thermometer_value
         x: 28
         y: 197
-        text: qsTr((thermometer_slider.value/10) + "º")
+        text: qsTr((thermometer_slider.value/10 - 273) + "º")
         font.pixelSize: 16
     }
 }
