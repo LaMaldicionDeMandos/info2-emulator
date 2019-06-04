@@ -10,7 +10,7 @@ Rectangle {
         height: 224
         stepSize: 10
         to: 5000
-        value: 2730
+        value: 0
         orientation: Qt.Vertical
         onValueChanged: tempChanged(thermometer_slider.value)
     }
