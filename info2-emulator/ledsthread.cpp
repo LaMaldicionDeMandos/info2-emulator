@@ -16,9 +16,9 @@ void LedsThread::run() {
 }
 
 void LedsThread::evaluateLed() {
-    bool isOn = LED(LED0);
-    if (isOn != this->on) {
-        this->on = isOn;
-        this->changeLed(on);
+    uint8_t state = LED(LED0);
+    if (state != this->state) {
+        this->state = state;
+        this->changeLed(state);
     }
 }

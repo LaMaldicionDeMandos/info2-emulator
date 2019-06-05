@@ -10,11 +10,11 @@ class LedsThread: public QThread
 {
     Q_OBJECT
 signals:
-    void changeLed( bool state );
+    void changeLed( uint8_t state );
 private:
     void run();
     uint8_t* data;
-    bool on;
+    uint8_t state;
 private slots:
     void evaluateLed();
 public:

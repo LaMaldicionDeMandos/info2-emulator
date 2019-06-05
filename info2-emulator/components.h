@@ -29,6 +29,16 @@ typedef union {
   u_int8_t  bytes[2];
 } THERMOMETER_TYPE;
 
+typedef union {
+    u_int8_t led;
+    struct {
+        u_int8_t red:1;
+        u_int8_t green:1;
+        u_int8_t blue:1;
+        u_int8_t empty:5;
+    }bits;
+}led_t;
+
 // Para usar con this->data
 #define BUTTON(i) this->data[i]
 #define LED(i) this->data[5 + i]

@@ -16,7 +16,7 @@
 class Info2GuiApplication : public QGuiApplication
 {
     Q_OBJECT
-    Q_PROPERTY(int ledState READ ledState WRITE setLedState NOTIFY ledStateChanged)
+    Q_PROPERTY(uint8_t ledState READ ledState WRITE setLedState NOTIFY ledStateChanged)
     Q_PROPERTY(bool relay0 READ relay0 WRITE setRelays NOTIFY relaysChanged)
     Q_PROPERTY(bool relay1 READ relay1 WRITE setRelays NOTIFY relaysChanged)
     Q_PROPERTY(bool relay2 READ relay2 WRITE setRelays NOTIFY relaysChanged)
@@ -27,7 +27,7 @@ public:
     void terminate();
 
     //LED 0: Para que la view lea el estado del led
-    bool ledState();
+    uint8_t ledState();
     bool relay0();
     bool relay1();
     bool relay2();
@@ -43,13 +43,13 @@ signals:
 public slots:
     void changeButtonState(int index, bool pressed);
     void changeIn(int index, bool checked);
-    void setLedState(const bool state);
+    void setLedState(const uint8_t state);
     void setRelays(const int index);
     void setThermometer(const int value);
 
 private:
     uint8_t* data;
-    bool led = false;
+    uint8_t led = 0;
     bool relays[RELAYS];
     uint16_t thermometerValue;
     LedsThread* ledsThread;
