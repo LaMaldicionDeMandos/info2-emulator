@@ -3,7 +3,7 @@ import QtQuick 2.0
 Rectangle {
     readonly property string led_on: "#ff0000"
     readonly property string led_off: "#442222"
-    property bool state
+    property int state
     property string label
 
     width: 35
@@ -18,7 +18,7 @@ Rectangle {
 
         GradientStop {
             position: 1
-            color: state ? led_on : led_off
+            color: "#" + ((state % 2 == 1) ? "bb" : "44") + (((state >> 1) % 2 == 1) ? "bb": "22") + (((state >> 2) % 2 == 1) ? "bb": "22")
         }
     }
     border.color: "#212121"

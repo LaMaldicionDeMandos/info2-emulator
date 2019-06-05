@@ -14,7 +14,7 @@ Info2GuiApplication::Info2GuiApplication(int argc, char* argv[]):  QGuiApplicati
 }
 
 void Info2GuiApplication::setLedState(const uint8_t state) {
-    led = state;
+    led.led = state;
     emit ledStateChanged();
 }
 
@@ -35,7 +35,7 @@ void Info2GuiApplication::setThermometer(const int value) {
 }
 
 uint8_t Info2GuiApplication::ledState() {
-    return led;
+    return led.led;
 }
 
 bool Info2GuiApplication::relay0() {
@@ -59,21 +59,8 @@ uint16_t Info2GuiApplication::thermometer() {
 }
 
 void Info2GuiApplication::changeButtonState(int index, bool pressed) {
-    led_t led;
-    led.led = this->ledState();
-    if (pressed)
-        switch (index) {
-        case 0: led.bits.red = !led.bits.red;break;
-        case 1: led.bits.green = !led.bits.green;break;
-        case 2: led.bits.blue = !led.bits.blue;break;
-        }
-    this->setLedState(led.led);
-
     BUTTON(index) = pressed;
     std::cout << "BUTTON_" << index << "=" << +BUTTON(index) << std::endl;
-    std::cout << "RED: " << +led.bits.red << std::endl;
-    std::cout << "GREEN: " << +led.bits.green << std::endl;
-    std::cout << "BLUE: " << +led.bits.blue << std::endl;
 }
 
 void Info2GuiApplication::changeIn(int index, bool checked) {

@@ -16,7 +16,7 @@
 class Info2GuiApplication : public QGuiApplication
 {
     Q_OBJECT
-    Q_PROPERTY(uint8_t ledState READ ledState WRITE setLedState NOTIFY ledStateChanged)
+    Q_PROPERTY(int ledState READ ledState WRITE setLedState NOTIFY ledStateChanged)
     Q_PROPERTY(bool relay0 READ relay0 WRITE setRelays NOTIFY relaysChanged)
     Q_PROPERTY(bool relay1 READ relay1 WRITE setRelays NOTIFY relaysChanged)
     Q_PROPERTY(bool relay2 READ relay2 WRITE setRelays NOTIFY relaysChanged)
@@ -49,7 +49,7 @@ public slots:
 
 private:
     uint8_t* data;
-    uint8_t led = 0;
+    led_t led;
     bool relays[RELAYS];
     uint16_t thermometerValue;
     LedsThread* ledsThread;
