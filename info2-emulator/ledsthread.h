@@ -10,7 +10,7 @@ class LedsThread: public QThread
 {
     Q_OBJECT
 signals:
-    void changeLed( uint8_t state );
+    void changeLed( int state );
 private:
     void run();
     uint8_t* data;

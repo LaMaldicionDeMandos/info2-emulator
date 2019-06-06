@@ -43,7 +43,7 @@ signals:
 public slots:
     void changeButtonState(int index, bool pressed);
     void changeIn(int index, bool checked);
-    void setLedState(const uint8_t state);
+    void setLedState(const int state);
     void setRelays(const int index);
     void setThermometer(const int value);
 

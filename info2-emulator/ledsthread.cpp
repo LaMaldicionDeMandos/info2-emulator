@@ -1,5 +1,6 @@
 #include "ledsthread.h"
 #include <QTimer>
+#include <iostream>
 
 LedsThread::LedsThread(uint8_t* data)
 {
@@ -16,7 +17,7 @@ void LedsThread::run() {
 }
 
 void LedsThread::evaluateLed() {
-    uint8_t state = LED(LED0);
+    int state = LED(LED0);
     if (state != this->state) {
         this->state = state;
         this->changeLed(state);

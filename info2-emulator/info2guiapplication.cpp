@@ -7,14 +7,14 @@ Info2GuiApplication::Info2GuiApplication(int argc, char* argv[]):  QGuiApplicati
     for(int i = 0; i < COMPONENT_COUNT; i++) this->data[i] = 0;
     this->ledsThread = new LedsThread(data);
     this->relaysThread = new RelaysThread(data);
-    QObject::connect((this->ledsThread), SIGNAL(changeLed(uint8_t)), this, SLOT(setLedState(uint8_t)), Qt::QueuedConnection);
+    QObject::connect((this->ledsThread), SIGNAL(changeLed(int)), this, SLOT(setLedState(int)), Qt::QueuedConnection);
     QObject::connect((this->relaysThread), SIGNAL(changeRelay(int)), this, SLOT(setRelays(int)), Qt::QueuedConnection);
     this->ledsThread->start();
     this->relaysThread->start();
 }
 
-void Info2GuiApplication::setLedState(const uint8_t state) {
-    led.led = state;
+void Info2GuiApplication::setLedState(const int state) {
+    led.led = static_cast<uint8_t>(state);
     emit ledStateChanged();
 }
 
@@ -24,12 +24,11 @@ void Info2GuiApplication::setRelays(const int index) {
 }
 
 void Info2GuiApplication::setThermometer(const int value) {
-    thermometerValue = value;
+    thermometerValue = static_cast<uint16_t>(value);
     THERMOMETER_TYPE thermometerData;
     thermometerData.value = thermometerValue;
     this->data[THERMOMETER] = thermometerData.bytes[0];
     this->data[THERMOMETER + 1] = thermometerData.bytes[1];
-    std::cout << "TH = " << thermometerValue << std::endl;
 
     emit thermometerChanged();
 }
@@ -60,12 +59,10 @@ uint16_t Info2GuiApplication::thermometer() {
 
 void Info2GuiApplication::changeButtonState(int index, bool pressed) {
     BUTTON(index) = pressed;
-    std::cout << "BUTTON_" << index << "=" << +BUTTON(index) << std::endl;
 }
 
 void Info2GuiApplication::changeIn(int index, bool checked) {
     IN(index) = checked;
-    std::cout << "IN_" << index << "=" << +IN(index) << std::endl;
 }
 
 void Info2GuiApplication::terminate() {
