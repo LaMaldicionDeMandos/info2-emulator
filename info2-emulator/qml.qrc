@@ -6,5 +6,6 @@
         <file>DigitalInput.qml</file>
         <file>Led.qml</file>
         <file>Thermometer.qml</file>
+        <file>Potentiometer.qml</file>
     </qresource>
 </RCC>

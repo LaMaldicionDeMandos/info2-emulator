@@ -145,6 +145,12 @@ Window {
             height: 224
             onTempChanged: app.thermometer = value
         }
+
+        Potentiometer {
+            id: potentiometer
+            x: 446
+            y: 8
+        }
     }
 
 }
