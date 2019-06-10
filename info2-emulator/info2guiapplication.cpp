@@ -25,12 +25,22 @@ void Info2GuiApplication::setRelays(const int index) {
 
 void Info2GuiApplication::setThermometer(const int value) {
     thermometerValue = static_cast<uint16_t>(value);
-    THERMOMETER_TYPE thermometerData;
+    AD_TYPE thermometerData;
     thermometerData.value = thermometerValue;
     this->data[THERMOMETER] = thermometerData.bytes[0];
     this->data[THERMOMETER + 1] = thermometerData.bytes[1];
 
     emit thermometerChanged();
+}
+
+void Info2GuiApplication::setPotentiometer(const int value) {
+    potentiometerValue = static_cast<uint16_t>(value);
+    AD_TYPE potentiometerData;
+    potentiometerData.value = potentiometerValue;
+    this->data[POTENTIOMETER] = potentiometerData.bytes[0];
+    this->data[POTENTIOMETER + 1] = potentiometerData.bytes[1];
+
+    emit potentiometerChanged();
 }
 
 uint8_t Info2GuiApplication::ledState() {
@@ -57,6 +67,10 @@ uint16_t Info2GuiApplication::thermometer() {
     return thermometerValue;
 }
 
+uint16_t Info2GuiApplication::potentiometer() {
+    return potentiometerValue;
+}
+
 void Info2GuiApplication::changeButtonState(int index, bool pressed) {
     BUTTON(index) = pressed;
 }
@@ -75,7 +89,7 @@ void Info2GuiApplication::terminate() {
 // Inicialización de la shared memory
 key_t Info2GuiApplication::getKey() {
     key_t key;
-    if ((key = ftok("/", 'i')) == -1) {
+    if ((key = ftok("/", 'k')) == -1) {
         perror("ftok fails\n");
         return -1;
     }

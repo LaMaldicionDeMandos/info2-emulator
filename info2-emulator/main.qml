@@ -150,6 +150,7 @@ Window {
             id: potentiometer
             x: 446
             y: 8
+            onVoltChanged: app.potentiometer = value
         }
     }
 

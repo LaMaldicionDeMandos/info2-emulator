@@ -23,11 +23,12 @@
 #define RELAY_3 14
 
 #define THERMOMETER 15
+#define POTENTIOMETER 17
 
 typedef union {
   u_int16_t value;
   u_int8_t  bytes[2];
-} THERMOMETER_TYPE;
+} AD_TYPE;
 
 typedef union {
     u_int8_t led;
@@ -45,7 +46,7 @@ typedef union {
 #define IN(i) this->data[8 + i]
 #define RELAY(i) this->data[11 + i]
 
-#define COMPONENT_COUNT 17
+#define COMPONENT_COUNT 19
 
 #define MEMORY_SIZE sizeof(u_int8_t) * COMPONENT_COUNT
 #endif // COMPONENTS_H
