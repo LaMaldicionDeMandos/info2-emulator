@@ -9,5 +9,6 @@
         <file>Potentiometer.qml</file>
         <file>digital-7.ttf</file>
         <file>Seg7.qml</file>
+        <file>Seg7Group.qml</file>
     </qresource>
 </RCC>

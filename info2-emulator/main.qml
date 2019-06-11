@@ -155,11 +155,17 @@ Window {
             onVoltChanged: app.potentiometer = value
         }
 
-        Seg7 {
-            id: seg1
-            x: 588
-            y: 263
+        Seg7Group {
+            id: segGroup0
+            x: 500
+            y: 256
 
+        }
+
+        Seg7Group {
+            id: segGroup1
+            x: 367
+            y: 256
         }
     }
 
