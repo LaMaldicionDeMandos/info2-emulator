@@ -1,11 +1,14 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QFontDatabase>
 #include "info2guiapplication.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     Info2GuiApplication app(argc, argv);
+
+    QFontDatabase::addApplicationFont(":/digital-7.ttf");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

@@ -7,5 +7,7 @@
         <file>Led.qml</file>
         <file>Thermometer.qml</file>
         <file>Potentiometer.qml</file>
+        <file>digital-7.ttf</file>
+        <file>Seg7.qml</file>
     </qresource>
 </RCC>

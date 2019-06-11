@@ -10,6 +10,7 @@ Window {
     visible: true
     width: 640
     height: 480
+    color: "#000000"
 
     title: qsTr("Info 2 Emulator")
 
@@ -18,6 +19,7 @@ Window {
     readonly property int relay_max_value: 60
 
     Rectangle {
+        id: rectangle
         width: 640
         height: 480
         color: "#65b763"
@@ -152,6 +154,43 @@ Window {
             y: 8
             onVoltChanged: app.potentiometer = value
         }
+
+        Seg7 {
+            id: seg1
+            x: 588
+            y: 263
+
+        }
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
