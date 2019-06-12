@@ -23,6 +23,7 @@ class Info2GuiApplication : public QGuiApplication
     Q_PROPERTY(bool relay3 READ relay3 WRITE setRelays NOTIFY relaysChanged)
     Q_PROPERTY(int thermometer READ thermometer WRITE setThermometer NOTIFY thermometerChanged)
     Q_PROPERTY(int potentiometer READ potentiometer WRITE setPotentiometer NOTIFY potentiometerChanged)
+    Q_PROPERTY(int adc_extern READ adc_extern WRITE setAdcExtern NOTIFY adcExternChanged)
 public:
     explicit Info2GuiApplication(int argc, char* argv[]);
     void terminate();
@@ -35,6 +36,7 @@ public:
     bool relay3();
     uint16_t thermometer();
     uint16_t potentiometer();
+    uint16_t adc_extern();
 
 signals:
     //LED 0: Señal que avisa que el led cambio de estado
@@ -42,6 +44,7 @@ signals:
     void relaysChanged();
     void thermometerChanged();
     void potentiometerChanged();
+    void adcExternChanged();
 
 public slots:
     void changeButtonState(int index, bool pressed);
@@ -50,6 +53,7 @@ public slots:
     void setRelays(const int index);
     void setThermometer(const int value);
     void setPotentiometer(const int value);
+    void setAdcExtern(const int value);
 
 private:
     uint8_t* data;
@@ -57,6 +61,7 @@ private:
     bool relays[RELAYS];
     uint16_t thermometerValue;
     uint16_t potentiometerValue;
+    uint16_t adcExternValue;
     LedsThread* ledsThread;
     RelaysThread* relaysThread;
     QSharedMemory sharedMemory;

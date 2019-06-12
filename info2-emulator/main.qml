@@ -150,9 +150,16 @@ Window {
 
         Potentiometer {
             id: potentiometer
-            x: 446
+            x: 456
             y: 8
             onVoltChanged: app.potentiometer = value
+        }
+
+        AdcExtern {
+            id: adc_extern
+            x: 147
+            y: 8
+            onCountChanged: app.potentiometer = value
         }
 
         Seg7Group {

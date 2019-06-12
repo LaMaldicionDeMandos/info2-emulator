@@ -24,6 +24,7 @@
 
 #define THERMOMETER 15
 #define POTENTIOMETER 17
+#define ADC_EXTERN 19
 
 typedef union {
   u_int16_t value;
@@ -46,7 +47,7 @@ typedef union {
 #define IN(i) this->data[8 + i]
 #define RELAY(i) this->data[11 + i]
 
-#define COMPONENT_COUNT 19
+#define COMPONENT_COUNT 21
 
 #define MEMORY_SIZE sizeof(u_int8_t) * COMPONENT_COUNT
 #endif // COMPONENTS_H

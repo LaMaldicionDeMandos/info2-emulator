@@ -4,17 +4,17 @@ import QtQuick.Controls 2.1
 Rectangle {
     height: 224
     signal voltChanged(int value)
-    Slider {
-        id: potentiometer_slider
-        x: 0
+
+    Dial {
+        id: potentiometer_dial
+        x: 8
         y: 29
-        width: 180
-        height: 22
+        width: 148
+        height: 83
         stepSize: 1
         to: 33
         value: 0
-        orientation: Qt.Horizontal
-        onValueChanged: voltChanged(potentiometer_slider.value)
+        onValueChanged: voltChanged(potentiometer_dial.value)
     }
 
     Text {
@@ -27,11 +27,11 @@ Rectangle {
 
     Text {
         id: potentiometer_value
-        x: 144
+        x: 120
         y: 4
         width: 36
         height: 19
-        text: qsTr((potentiometer_slider.value/10) + "V")
+        text: qsTr((potentiometer_dial.value/10) + "V")
         font.pixelSize: 16
     }
 }

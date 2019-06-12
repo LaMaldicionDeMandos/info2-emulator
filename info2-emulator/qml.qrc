@@ -10,5 +10,6 @@
         <file>digital-7.ttf</file>
         <file>Seg7.qml</file>
         <file>Seg7Group.qml</file>
+        <file>AdcExtern.qml</file>
     </qresource>
 </RCC>

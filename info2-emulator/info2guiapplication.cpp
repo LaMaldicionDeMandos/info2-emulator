@@ -43,6 +43,16 @@ void Info2GuiApplication::setPotentiometer(const int value) {
     emit potentiometerChanged();
 }
 
+void Info2GuiApplication::setAdcExtern(const int value) {
+    adcExternValue = static_cast<uint16_t>(value);
+    AD_TYPE adcExternData;
+    adcExternData.value = adcExternValue;
+    this->data[ADC_EXTERN] = adcExternData.bytes[0];
+    this->data[ADC_EXTERN + 1] = adcExternData.bytes[1];
+
+    emit adcExternChanged();
+}
+
 uint8_t Info2GuiApplication::ledState() {
     return led.led;
 }
@@ -71,6 +81,10 @@ uint16_t Info2GuiApplication::potentiometer() {
     return potentiometerValue;
 }
 
+uint16_t Info2GuiApplication::adc_extern() {
+    return adcExternValue;
+}
+
 void Info2GuiApplication::changeButtonState(int index, bool pressed) {
     BUTTON(index) = pressed;
 }
@@ -89,7 +103,7 @@ void Info2GuiApplication::terminate() {
 // Inicialización de la shared memory
 key_t Info2GuiApplication::getKey() {
     key_t key;
-    if ((key = ftok("/", 'k')) == -1) {
+    if ((key = ftok("/", 'l')) == -1) {
         perror("ftok fails\n");
         return -1;
     }
