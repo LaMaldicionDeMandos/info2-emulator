@@ -159,7 +159,7 @@ Window {
             id: adc_extern
             x: 147
             y: 8
-            onCountChanged: app.potentiometer = value
+            onCountChanged: app.adc_extern = value
         }
 
         Seg7Group {
