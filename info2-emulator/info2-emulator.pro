@@ -13,6 +13,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        display7.cpp \
         info2guiapplication.cpp \
         ledsthread.cpp \
         main.cpp \
@@ -35,6 +36,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     components.h \
+    display7.h \
     info2guiapplication.h \
     ledsthread.h \
     relaysthread.h

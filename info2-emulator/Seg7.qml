@@ -2,6 +2,7 @@ import QtQuick.Controls 2.1
 import QtQuick 2.0
 
 Rectangle {
+    property int value
     width: 44
     height: 60
     color: "#000000"
@@ -14,7 +15,7 @@ Rectangle {
         height: 44
 
         color: "#c93e24"
-        text: "7"
+        text: parent.value
         anchors.verticalCenterOffset: 0
         anchors.horizontalCenterOffset: 0
         anchors.topMargin: 0

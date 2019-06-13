@@ -26,10 +26,18 @@
 #define POTENTIOMETER 17
 #define ADC_EXTERN 19
 
+#define DSP_0 21
+#define DSP_1 25
+
 typedef union {
   u_int16_t value;
   u_int8_t  bytes[2];
 } AD_TYPE;
+
+typedef union {
+  u_int32_t value;
+  u_int8_t  bytes[4];
+} AD_X2_TYPE;
 
 typedef union {
     u_int8_t led;
@@ -46,8 +54,9 @@ typedef union {
 #define LED(i) this->data[5 + i]
 #define IN(i) this->data[8 + i]
 #define RELAY(i) this->data[11 + i]
+#define DSP(i) this->data[21 + i*4]
 
-#define COMPONENT_COUNT 21
+#define COMPONENT_COUNT 29
 
 #define MEMORY_SIZE sizeof(u_int8_t) * COMPONENT_COUNT
 #endif // COMPONENTS_H

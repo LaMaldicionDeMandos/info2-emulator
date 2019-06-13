@@ -103,7 +103,7 @@ void Info2GuiApplication::terminate() {
 // Inicialización de la shared memory
 key_t Info2GuiApplication::getKey() {
     key_t key;
-    if ((key = ftok("/", 'l')) == -1) {
+    if ((key = ftok("/", 'm')) == -1) {
         perror("ftok fails\n");
         return -1;
     }

@@ -166,6 +166,7 @@ Window {
             id: segGroup0
             x: 500
             y: 256
+            value: 231
 
         }
 
@@ -173,6 +174,7 @@ Window {
             id: segGroup1
             x: 367
             y: 256
+            value: 1543
         }
     }
 
