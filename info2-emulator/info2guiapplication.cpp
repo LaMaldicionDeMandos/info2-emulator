@@ -7,10 +7,13 @@ Info2GuiApplication::Info2GuiApplication(int argc, char* argv[]):  QGuiApplicati
     for(int i = 0; i < COMPONENT_COUNT; i++) this->data[i] = 0;
     this->ledsThread = new LedsThread(data);
     this->relaysThread = new RelaysThread(data);
+    this->displaysThread = new Display7(data);
     QObject::connect((this->ledsThread), SIGNAL(changeLed(int)), this, SLOT(setLedState(int)), Qt::QueuedConnection);
     QObject::connect((this->relaysThread), SIGNAL(changeRelay(int)), this, SLOT(setRelays(int)), Qt::QueuedConnection);
+    QObject::connect((this->displaysThread), SIGNAL(changeDisplay(int)), this, SLOT(setDisplays(int)), Qt::QueuedConnection);
     this->ledsThread->start();
     this->relaysThread->start();
+    this->displaysThread->start();
 }
 
 void Info2GuiApplication::setLedState(const int state) {
@@ -21,6 +24,11 @@ void Info2GuiApplication::setLedState(const int state) {
 void Info2GuiApplication::setRelays(const int index) {
     relays[index] = RELAY(index);
     emit relaysChanged();
+}
+
+void Info2GuiApplication::setDisplays(const int index) {
+    displays[index] = DSP(index);
+    emit displaysChanged();
 }
 
 void Info2GuiApplication::setThermometer(const int value) {
@@ -73,6 +81,14 @@ bool Info2GuiApplication::relay3() {
     return relays[3];
 }
 
+int Info2GuiApplication::dsp0() {
+    return displays[0];
+}
+
+int Info2GuiApplication::dsp1() {
+    return displays[1];
+}
+
 uint16_t Info2GuiApplication::thermometer() {
     return thermometerValue;
 }
@@ -96,8 +112,13 @@ void Info2GuiApplication::changeIn(int index, bool checked) {
 void Info2GuiApplication::terminate() {
     this->ledsThread->quit();
     this->ledsThread->wait();
+
     this->relaysThread->quit();
     this->relaysThread->wait();
+
+    this->displaysThread->quit();
+    this->displaysThread->wait();
+
 }
 
 // Inicialización de la shared memory
