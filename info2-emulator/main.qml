@@ -178,8 +178,10 @@ Window {
 
         Display {
             id: display
-            x: 352
+            x: 387
             y: 128
+            dsp_0: "Tittle"
+            dsp_1: "Subtitle"
         }
     }
 
