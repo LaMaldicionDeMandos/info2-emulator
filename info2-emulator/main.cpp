@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
     Info2GuiApplication app(argc, argv);
 
     QFontDatabase::addApplicationFont(":/digital-7.ttf");
+    QFontDatabase::addApplicationFont(":/subway-ticker.regular.ttf");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

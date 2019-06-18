@@ -11,5 +11,7 @@
         <file>Seg7.qml</file>
         <file>Seg7Group.qml</file>
         <file>AdcExtern.qml</file>
+        <file>Display.qml</file>
+        <file>subway-ticker.regular.ttf</file>
     </qresource>
 </RCC>

@@ -175,6 +175,12 @@ Window {
             y: 256
             value: app.dsp1
         }
+
+        Display {
+            id: display
+            x: 352
+            y: 128
+        }
     }
 
 }
