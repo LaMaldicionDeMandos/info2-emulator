@@ -15,6 +15,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         display7.cpp \
         info2guiapplication.cpp \
+        lcdthread.cpp \
         ledsthread.cpp \
         main.cpp \
         relaysthread.cpp
@@ -38,6 +39,7 @@ HEADERS += \
     components.h \
     display7.h \
     info2guiapplication.h \
+    lcdthread.h \
     ledsthread.h \
     relaysthread.h
 

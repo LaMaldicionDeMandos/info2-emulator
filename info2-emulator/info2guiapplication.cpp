@@ -8,12 +8,15 @@ Info2GuiApplication::Info2GuiApplication(int argc, char* argv[]):  QGuiApplicati
     this->ledsThread = new LedsThread(data);
     this->relaysThread = new RelaysThread(data);
     this->displaysThread = new Display7(data);
+    this->lcdsThread = new LCDThread(data);
     QObject::connect((this->ledsThread), SIGNAL(changeLed(int)), this, SLOT(setLedState(int)), Qt::QueuedConnection);
     QObject::connect((this->relaysThread), SIGNAL(changeRelay(int)), this, SLOT(setRelays(int)), Qt::QueuedConnection);
     QObject::connect((this->displaysThread), SIGNAL(changeDisplay(int)), this, SLOT(setDisplays(int)), Qt::QueuedConnection);
+    QObject::connect((this->lcdsThread), SIGNAL(changeDisplay(int)), this, SLOT(setLcds(int)), Qt::QueuedConnection);
     this->ledsThread->start();
     this->relaysThread->start();
     this->displaysThread->start();
+    this->lcdsThread->start();
 }
 
 void Info2GuiApplication::setLedState(const int state) {
@@ -33,6 +36,11 @@ void Info2GuiApplication::setDisplays(const int index) {
     }
     displays[index] = dsp.value;
     emit displaysChanged();
+}
+
+void Info2GuiApplication::setLcds(const int index) {
+    lcds[index] = lcdsThread->lcd(index);
+    emit lcdsChanged();
 }
 
 void Info2GuiApplication::setThermometer(const int value) {
@@ -93,6 +101,14 @@ int Info2GuiApplication::dsp1() {
     return displays[1];
 }
 
+std::string Info2GuiApplication::lcd0() {
+    return lcds[0];
+}
+
+std::string Info2GuiApplication::lcd1() {
+    return lcds[1];
+}
+
 uint16_t Info2GuiApplication::thermometer() {
     return thermometerValue;
 }
@@ -107,6 +123,12 @@ uint16_t Info2GuiApplication::adc_extern() {
 
 void Info2GuiApplication::changeButtonState(int index, bool pressed) {
     BUTTON(index) = pressed;
+    if (pressed) {
+        this->lcds[0] = "Boton pressed.";
+    } else {
+        this->lcds[0] = "Boton unPressed.";
+    }
+    this->lcdsChanged();
 }
 
 void Info2GuiApplication::changeIn(int index, bool checked) {
@@ -123,12 +145,14 @@ void Info2GuiApplication::terminate() {
     this->displaysThread->quit();
     this->displaysThread->wait();
 
+    this->lcdsThread->quit();
+    this->lcdsThread->wait();
 }
 
 // Inicialización de la shared memory
 key_t Info2GuiApplication::getKey() {
     key_t key;
-    if ((key = ftok("/", 'm')) == -1) {
+    if ((key = ftok("/", 'n')) == -1) {
         perror("ftok fails\n");
         return -1;
     }

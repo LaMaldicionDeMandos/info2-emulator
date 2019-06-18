@@ -180,8 +180,8 @@ Window {
             id: display
             x: 387
             y: 128
-            dsp_0: "Tittle"
-            dsp_1: "Subtitle"
+            dsp_0: app.lcd0
+            dsp_1: app.lcd1
         }
     }
 

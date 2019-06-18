@@ -29,6 +29,9 @@
 #define DSP_0 21
 #define DSP_1 25
 
+#define LCD_0 29
+#define LCD_1 45
+
 typedef union {
   u_int16_t value;
   u_int8_t  bytes[2];
@@ -55,8 +58,9 @@ typedef union {
 #define IN(i) this->data[8 + i]
 #define RELAY(i) this->data[11 + i]
 #define DSP(i, j) this->data[21 + i*4 + j]
+#define LCD(i, j) this->data[29 + i*16 + j]
 
-#define COMPONENT_COUNT 29
+#define COMPONENT_COUNT 61
 
 #define MEMORY_SIZE sizeof(u_int8_t) * COMPONENT_COUNT
 #endif // COMPONENTS_H

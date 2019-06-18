@@ -12,6 +12,7 @@
 #include "ledsthread.h"
 #include "relaysthread.h"
 #include "display7.h"
+#include "lcdthread.h"
 #include "components.h"
 
 class Info2GuiApplication : public QGuiApplication
@@ -27,6 +28,8 @@ class Info2GuiApplication : public QGuiApplication
     Q_PROPERTY(int adc_extern READ adc_extern WRITE setAdcExtern NOTIFY adcExternChanged)
     Q_PROPERTY(int dsp0 READ dsp0 WRITE setDisplays NOTIFY displaysChanged)
     Q_PROPERTY(int dsp1 READ dsp1 WRITE setDisplays NOTIFY displaysChanged)
+    Q_PROPERTY(int lcd0 READ lcd0 WRITE setLcds NOTIFY lcdsChanged)
+    Q_PROPERTY(int lcd1 READ lcd1 WRITE setLcds NOTIFY lcdsChanged)
 public:
     explicit Info2GuiApplication(int argc, char* argv[]);
     void terminate();
@@ -39,6 +42,8 @@ public:
     bool relay3();
     int dsp0();
     int dsp1();
+    std::string lcd0();
+    std::string lcd1();
     uint16_t thermometer();
     uint16_t potentiometer();
     uint16_t adc_extern();
@@ -48,6 +53,7 @@ signals:
     void ledStateChanged();
     void relaysChanged();
     void displaysChanged();
+    void lcdsChanged();
     void thermometerChanged();
     void potentiometerChanged();
     void adcExternChanged();
@@ -58,6 +64,7 @@ public slots:
     void setLedState(const int state);
     void setRelays(const int index);
     void setDisplays(const int index);
+    void setLcds(const int index);
     void setThermometer(const int value);
     void setPotentiometer(const int value);
     void setAdcExtern(const int value);
@@ -67,12 +74,14 @@ private:
     led_t led;
     bool relays[RELAYS];
     uint32_t displays[DISPLAYS];
+    std::string lcds[LCDS];
     uint16_t thermometerValue;
     uint16_t potentiometerValue;
     uint16_t adcExternValue;
     LedsThread* ledsThread;
     RelaysThread* relaysThread;
     Display7* displaysThread;
+    LCDThread* lcdsThread;
     QSharedMemory sharedMemory;
     key_t getKey();
     uint8_t* init_shared_memory();
