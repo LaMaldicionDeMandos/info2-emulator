@@ -16,11 +16,14 @@ void Display7::run() {
 }
 
 void Display7::evaluateDisplays() {
+    AD_X2_TYPE dsps[2];
     for (int i = 0; i < DISPLAYS; i++) {
-         bool isOn = DSP(i);
-         if (isOn != displays[i]) {
-             this->displays[i] = isOn;
-             this->changeDisplay(i);
-         }
+        for (int j = 0; j < 4; j++) {
+            dsps[i].bytes[j] = DSP(i,j);
+        }
+        if (displays[i] != dsps[i].value) {
+            displays[i] = dsps[i].value;
+            changeDisplay(i);
+        }
     }
 }

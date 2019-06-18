@@ -27,7 +27,11 @@ void Info2GuiApplication::setRelays(const int index) {
 }
 
 void Info2GuiApplication::setDisplays(const int index) {
-    displays[index] = DSP(index);
+    AD_X2_TYPE dsp;
+    for (int i = 0; i < 4; i++) {
+        dsp.bytes[i] = DSP(index, i);
+    }
+    displays[index] = dsp.value;
     emit displaysChanged();
 }
 

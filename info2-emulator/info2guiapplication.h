@@ -66,7 +66,7 @@ private:
     uint8_t* data;
     led_t led;
     bool relays[RELAYS];
-    int displays[DISPLAYS];
+    uint32_t displays[DISPLAYS];
     uint16_t thermometerValue;
     uint16_t potentiometerValue;
     uint16_t adcExternValue;

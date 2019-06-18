@@ -54,7 +54,7 @@ typedef union {
 #define LED(i) this->data[5 + i]
 #define IN(i) this->data[8 + i]
 #define RELAY(i) this->data[11 + i]
-#define DSP(i) this->data[21 + i*4]
+#define DSP(i, j) this->data[21 + i*4 + j]
 
 #define COMPONENT_COUNT 29
 

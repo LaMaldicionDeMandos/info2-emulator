@@ -14,7 +14,7 @@ signals:
 private:
     void run();
     uint8_t* data;
-    int displays[DISPLAYS];
+    uint32_t displays[DISPLAYS];
 private slots:
     void evaluateDisplays();
 public:
