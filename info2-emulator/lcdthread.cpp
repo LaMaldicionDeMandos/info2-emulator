@@ -24,8 +24,8 @@ void LCDThread::evaluateDisplays() {
         std::string stringLcd = lcds[i];
         if (displays[i] != stringLcd) {
             displays[i] = stringLcd;
-            if (i) changeDisplay1(QString::fromStdString(stringLcd));
-            else changeDisplay0(QString::fromStdString(stringLcd));
+            if (i == 0) changeDisplay0(QString::fromStdString(displays[i]));
+            else changeDisplay1(QString::fromStdString(displays[i]));
         }
     }
 }

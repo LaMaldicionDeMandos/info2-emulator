@@ -40,12 +40,12 @@ void Info2GuiApplication::setDisplays(const int index) {
 }
 
 void Info2GuiApplication::setLcds0(const QString lcdString) {
-    lcds[0] = QString::fromStdString(lcdsThread->lcd(0));
+    lcds[0] = lcdString;
     emit lcdsChanged();
 }
 
 void Info2GuiApplication::setLcds1(const QString lcdString) {
-    lcds[0] = QString::fromStdString(lcdsThread->lcd(1));
+    lcds[1] = lcdString;
     emit lcdsChanged();
 }
 
