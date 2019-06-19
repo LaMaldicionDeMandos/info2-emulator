@@ -11,7 +11,8 @@ class LCDThread: public QThread
 {
     Q_OBJECT
 signals:
-    void changeDisplay( int index );
+    void changeDisplay0(const QString lcdString);
+    void changeDisplay1(const QString lcdString);
 private:
     void run();
     uint8_t* data;

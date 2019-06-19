@@ -12,7 +12,8 @@ Info2GuiApplication::Info2GuiApplication(int argc, char* argv[]):  QGuiApplicati
     QObject::connect((this->ledsThread), SIGNAL(changeLed(int)), this, SLOT(setLedState(int)), Qt::QueuedConnection);
     QObject::connect((this->relaysThread), SIGNAL(changeRelay(int)), this, SLOT(setRelays(int)), Qt::QueuedConnection);
     QObject::connect((this->displaysThread), SIGNAL(changeDisplay(int)), this, SLOT(setDisplays(int)), Qt::QueuedConnection);
-    QObject::connect((this->lcdsThread), SIGNAL(changeDisplay(int)), this, SLOT(setLcds(int)), Qt::QueuedConnection);
+    QObject::connect((this->lcdsThread), SIGNAL(changeDisplay0(QString)), this, SLOT(setLcds0(QString)), Qt::QueuedConnection);
+    QObject::connect((this->lcdsThread), SIGNAL(changeDisplay1(QString)), this, SLOT(setLcds1(QString)), Qt::QueuedConnection);
     this->ledsThread->start();
     this->relaysThread->start();
     this->displaysThread->start();
@@ -38,8 +39,13 @@ void Info2GuiApplication::setDisplays(const int index) {
     emit displaysChanged();
 }
 
-void Info2GuiApplication::setLcds(const int index) {
-    lcds[index] = lcdsThread->lcd(index);
+void Info2GuiApplication::setLcds0(const QString lcdString) {
+    lcds[0] = QString::fromStdString(lcdsThread->lcd(0));
+    emit lcdsChanged();
+}
+
+void Info2GuiApplication::setLcds1(const QString lcdString) {
+    lcds[0] = QString::fromStdString(lcdsThread->lcd(1));
     emit lcdsChanged();
 }
 
@@ -101,11 +107,11 @@ int Info2GuiApplication::dsp1() {
     return displays[1];
 }
 
-std::string Info2GuiApplication::lcd0() {
+QString Info2GuiApplication::lcd0() {
     return lcds[0];
 }
 
-std::string Info2GuiApplication::lcd1() {
+QString Info2GuiApplication::lcd1() {
     return lcds[1];
 }
 
@@ -123,12 +129,6 @@ uint16_t Info2GuiApplication::adc_extern() {
 
 void Info2GuiApplication::changeButtonState(int index, bool pressed) {
     BUTTON(index) = pressed;
-    if (pressed) {
-        this->lcds[0] = "Boton pressed.";
-    } else {
-        this->lcds[0] = "Boton unPressed.";
-    }
-    this->lcdsChanged();
 }
 
 void Info2GuiApplication::changeIn(int index, bool checked) {
