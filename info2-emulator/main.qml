@@ -4,13 +4,15 @@ import QtQuick.Controls 1.4
 import QtQuick.Controls 2.1
 import QtQuick.Controls.Styles.Desktop 1.0
 import QtQuick.Controls.Styles 1.4
+import QtQuick.Controls.Material 2.3
 
 
 Window {
+    id: window
     visible: true
     width: 640
-    height: 480
-    color: "#000000"
+    height: 680
+    color: "#3c3f41"
 
     title: qsTr("Info 2 Emulator")
 
@@ -18,8 +20,68 @@ Window {
     readonly property string led_off: "#442222"
     readonly property int relay_max_value: 60
 
+    Label {
+        id: in_tx_title
+        color: "#ffffff"
+        text: "Transmición Entrante"
+        font.bold: true
+        horizontalAlignment: Text.AlignHCenter
+        anchors.horizontalCenter: parent.horizontalCenter
+
+    }
+
+    Label {
+        id: in_tx_bin_label
+        width: 315
+        text: "Binario"
+        color: "#ffffff"
+        font.bold: true
+        horizontalAlignment: Text.AlignHCenter
+        anchors.top: in_tx_title.bottom
+        anchors.topMargin: 2
+        anchors.left: parent.left
+        anchors.leftMargin: 2
+    }
+
+    TextArea {
+        id: textArea
+        width: 316
+        anchors.top: in_tx_bin_label.bottom
+        anchors.topMargin: 2
+        anchors.bottom: rectangle.top
+        anchors.bottomMargin: 2
+        anchors.left: parent.left
+        anchors.leftMargin: 2
+    }
+
+    Label {
+        id: in_tx_text_label
+        width: 315
+        text: "Assci"
+        color: "#ffffff"
+        font.bold: true
+        horizontalAlignment: Text.AlignHCenter
+        anchors.right: parent.right
+        anchors.rightMargin: 2
+        anchors.top: in_tx_title.bottom
+        anchors.topMargin: 2
+    }
+
+    TextArea {
+        id: textArea1
+        width: 316
+        anchors.top: in_tx_text_label.bottom
+        anchors.topMargin: 2
+        anchors.bottom: rectangle.top
+        anchors.bottomMargin: 2
+        anchors.left: parent.left
+        anchors.leftMargin: 2
+    }
+
     Rectangle {
         id: rectangle
+        x: 0
+        y: 200
         width: 640
         height: 480
         color: "#65b763"
@@ -184,7 +246,6 @@ Window {
             dsp_1: app.lcd1
         }
     }
-
 }
 
 
@@ -216,3 +277,22 @@ Window {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*##^## Designer {
+    D{i:4;anchors_width:315}
+}
+ ##^##*/
